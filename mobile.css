@@ -1,7 +1,12 @@
 body {
-    background-color: red;
+    font-family: Verdana, Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
 }
-/* для планшетов и фаблетов */
 @media (min-width: 481px) and (max-width:768px) {
     body {
         background-color: green;
