@@ -36,9 +36,10 @@ body {
     list-style: none; 
 }
 #nav a {
-    display: block;
+    min-width: 150px; /* Ensure each link has a minimum width */
+    display: inline-block; /* Ensure proper width */
     color: black;
-    padding: 10px 25px;
+    padding: 10px 30px;
     text-decoration: none;
     border-right: 1px solid #ccc;
 }
@@ -116,26 +117,46 @@ body {
 .wrapper, #nav, #header, #footer{
     min-width: 768px;
 }
+/* Tooltip container */
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
-  }
-  
-  .tooltip .tooltiptext {
+    cursor: pointer; /* Show a pointer cursor */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 200px; /* Increase the width to fit the text */
+    font-size: 8px; /* Adjust font-size if necessary */
     background-color: black;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
-  
-    /* Position the tooltip */
     position: absolute;
     z-index: 1;
-  }
-  
-  .tooltip:hover .tooltiptext {
+    bottom: 125%; /* Position above the element */
+    left: 50%;
+    margin-left: -80px; /* Center the tooltip */
+    opacity: 0; /* Make tooltip invisible initially */
+    transition: opacity 0.3s; /* Animation */
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent; /* Creates the arrow */
+}
+
+/* Show the tooltip when hovering */
+.tooltip:hover .tooltiptext {
     visibility: visible;
-  }
+    opacity: 1; /* Fade-in effect */
+}
