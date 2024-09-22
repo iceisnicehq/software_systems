@@ -1,10 +1,8 @@
-/* tooltip for hovering over menut buttons */
-/* chapter 9 */
 * {
     box-sizing: border-box;
 }
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, ul, li{
-                 
+
     margin: 0;
     padding: 0;
     border: 0;
@@ -14,7 +12,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, ul, li{
 body {
     font-family: Verdana, Arial, sans-serif;    
     background-color: #f7f7f7;
-    /* для планшетов и фаблетов */
+
 }
 #header{ 
     background-color: #f4f4f4;
@@ -36,8 +34,8 @@ body {
     list-style: none; 
 }
 #nav a {
-    min-width: 150px; /* Ensure each link has a minimum width */
-    display: inline-block; /* Ensure proper width */
+    min-width: 150px; 
+    display: inline-block; 
     color: black;
     padding: 10px 30px;
     text-decoration: none;
@@ -117,18 +115,16 @@ body {
 .wrapper, #nav, #header, #footer{
     min-width: 768px;
 }
-/* Tooltip container */
 .tooltip {
     position: relative;
     display: inline-block;
-    cursor: pointer; /* Show a pointer cursor */
+    cursor: pointer; 
 }
 
-/* Tooltip text */
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 200px; /* Increase the width to fit the text */
-    font-size: 8px; /* Adjust font-size if necessary */
+    width: 200px; 
+    font-size: 8px; 
     background-color: black;
     color: #fff;
     text-align: center;
@@ -136,27 +132,25 @@ body {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Position above the element */
+    bottom: 125%; 
     left: 50%;
-    margin-left: -80px; /* Center the tooltip */
-    opacity: 0; /* Make tooltip invisible initially */
-    transition: opacity 0.3s; /* Animation */
+    margin-left: -80px; 
+    opacity: 0; 
+    transition: opacity 0.3s; 
 }
 
-/* Tooltip arrow */
 .tooltip .tooltiptext::after {
     content: "";
     position: absolute;
-    top: 100%; /* Bottom of the tooltip */
+    top: 100%; 
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: black transparent transparent transparent; /* Creates the arrow */
+    border-color: black transparent transparent transparent; 
 }
 
-/* Show the tooltip when hovering */
 .tooltip:hover .tooltiptext {
     visibility: visible;
-    opacity: 1; /* Fade-in effect */
+    opacity: 1; 
 }

@@ -1,20 +1,11 @@
+
 body {
-    font-family: Verdana, Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-}
-@media (min-width: 481px) and (max-width:768px) {
-    body {
-        background-color: green;
+        background-color: rgb(17, 17, 18);
     }
-}
-/* для декстопов */
-@media (min-width:769px) {
+
+/* For larger screens with a width of 1000px or more */
+@media only screen and (min-width: 768px) {
     body {
-        background-color: blue;
+        background-color: rgb(155, 117, 117);
     }
 }
