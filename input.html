@@ -8,6 +8,25 @@
         <link rel="stylesheet" type="text/css" href="mobile.css" />
         <link rel="icon" type="image/png" href="/images/favicon.ico"/>
     </head>
+    <script>
+        function saveToFile() {
+        var field1 = document.getElementById("input1").value;
+        var field2 = document.getElementById("input2").value;
+        var field3 = document.getElementById("input3").value;
+        var field4 = document.getElementById("input4").value;
+        var field5 = document.getElementById("input5").value;
+        
+        var data = field1 + " ; " + field2 + " ; " + field3 + " ; "+ field4 + " ; "+ field5 + "\n";
+        
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+        element.setAttribute('download', 'data.txt');
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+        }
+        </script>        
     <body>
         <div id="header">
             <h1>Автоматизированное рабочее место отдела технической документации</h1>
@@ -56,13 +75,38 @@
                     <li><a href="input.html">Ввод данных об отчёте</a></li>
                 </ul>
             </div>
-            <div id="article">
-                <h2>Краткое описание</h2>
-                <p>Автоматизированное рабочее место проектирования технической документации обеспечивает выполнение всех функций проектирования и содержит новые решения и модули, обеспечивающие высокий уровень автоматизации для режима реконструкции и модернизации действующих систем и устройств СЦБ. Менеджер проектов обеспечивает управление проектами, сетевой режим работы, доступ ко всем режимам и функциям АРМ.
-                    <br>Класс программного обеспечения: Информационные системы для решения специфических отраслевых задач, Системы управления проектами, исследованиями, разработкой, проектированием и внедрением
-                    <br><br>Добавлен в единого реестра российских программ 30 Ноября 2018 Приказ Минкомсвязи России от 30.11.2018 №665
-                    <br>Альтернативные названия - Автоматизированное рабочее место проектировщика технической документации</p>
+   <div id="article">
+        <div id="main">
+            <h2>Введите информацию об отчете:</h2>
+            
+            <div class="form-group">
+                <label for="input1">Наименование:</label>
+                <input type="text" id="input1" required>
             </div>
+            
+            <div class="form-group">
+                <label for="input2">Номер отчета:</label>
+                <input type="text" id="input2" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="input3">Дата формления:</label>
+                <input type="text" id="input3" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="input4">ФИО создателя:</label>
+                <input type="text" id="input4" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="input5">Объект:</label>
+                <input type="text" id="input5" required>
+            </div>
+                    
+            <button onclick="saveToFile()">Сохранить данные</button>
+        </div>
+    </div>
         </div>
         <div id="footer">
             <p>Contacts: oasu@gubkin.ru</p>
