@@ -10,7 +10,6 @@
     </head>
     <script>
         let reportData = [];
-
         function saveToFile() {
             const report = [
                 document.getElementById('input1').value,
@@ -19,28 +18,20 @@
                 document.getElementById('input4').value,
                 document.getElementById('input5').value
             ];
-
-            // Append new report data to the array
             reportData.push(report);
-
-            // Clear the form fields
             document.getElementById('reportForm').reset();
-
-            // Create a downloadable CSV file
             downloadData();
         }
-
         function downloadData() {
-            // Create CSV content
-            let csvContent = "data:text/csv;charset=utf-8," // Header
-                + reportData.map(e => e.join(",")).join("\r\n"); // Data rows
-            const encodedUri = encodeURI(csvContent); // Encode the URI
-            const link = document.createElement("a"); // Create an anchor element
-            link.setAttribute("href", encodedUri); // Set the href to the encoded URI
-            link.setAttribute("download", "data.txt"); // Set the file name
-            document.body.appendChild(link); // Append the anchor to the body
-            link.click(); // Programmatically click the anchor to trigger the download
-            document.body.removeChild(link); // Remove the anchor from the document
+            let csvContent = "data:text/csv;charset=utf-8," 
+                + reportData.map(e => e.join(",")).join("\r\n"); 
+            const encodedUri = encodeURI(csvContent); 
+            const link = document.createElement("a"); 
+            link.setAttribute("href", encodedUri); 
+            link.setAttribute("download", "data.txt"); 
+            document.body.appendChild(link); 
+            link.click(); 
+            document.body.removeChild(link); 
         }
     </script>
     <body>
