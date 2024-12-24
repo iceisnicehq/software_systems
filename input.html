@@ -9,24 +9,40 @@
         <link rel="icon" type="image/png" href="/images/favicon.ico"/>
     </head>
     <script>
+        let reportData = [];
+
         function saveToFile() {
-        var field1 = document.getElementById("input1").value;
-        var field2 = document.getElementById("input2").value;
-        var field3 = document.getElementById("input3").value;
-        var field4 = document.getElementById("input4").value;
-        var field5 = document.getElementById("input5").value;
-        
-        var data = field1 + " ; " + field2 + " ; " + field3 + " ; "+ field4 + " ; "+ field5 + "\n";
-        
-        var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
-        element.setAttribute('download', 'data.txt');
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
+            const report = [
+                document.getElementById('input1').value,
+                document.getElementById('input2').value,
+                document.getElementById('input3').value,
+                document.getElementById('input4').value,
+                document.getElementById('input5').value
+            ];
+
+            // Append new report data to the array
+            reportData.push(report);
+
+            // Clear the form fields
+            document.getElementById('reportForm').reset();
+
+            // Create a downloadable CSV file
+            downloadData();
         }
-        </script>        
+
+        function downloadData() {
+            // Create CSV content
+            let csvContent = "data:text/csv;charset=utf-8," // Header
+                + reportData.map(e => e.join(",")).join("\r\n"); // Data rows
+            const encodedUri = encodeURI(csvContent); // Encode the URI
+            const link = document.createElement("a"); // Create an anchor element
+            link.setAttribute("href", encodedUri); // Set the href to the encoded URI
+            link.setAttribute("download", "data.txt"); // Set the file name
+            document.body.appendChild(link); // Append the anchor to the body
+            link.click(); // Programmatically click the anchor to trigger the download
+            document.body.removeChild(link); // Remove the anchor from the document
+        }
+    </script>
     <body>
         <div id="header">
             <h1>Автоматизированное рабочее место отдела технической документации</h1>
@@ -75,31 +91,34 @@
                     <li><a href="input.html">Ввод данных об отчёте</a></li>
                 </ul>
             </div>
-   <div id="article">
-        <div id="main">
-            <h2>Ввод данных об отчете:</h2>
-            <div class="form-group">
-                <label for="input1">Наименование:</label>
-                <input type="text" id="input1" required>
+            <div id="article">
+                <div id="main">
+                    <h2>Ввод данных об отчете:</h2>
+                    <form id="reportForm" onsubmit="saveToFile(); return false;">
+                        <div class="form-group">
+                            <label for="input1">Наименование:</label>
+                            <input type="text" id="input1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input2">Номер отчета:</label>
+                            <input type="text" id="input2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input3">Дата создания:</label>
+                            <input type="text" id="input3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input4">ФИО создателя:</label>
+                            <input type="text" id="input4" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input5">Объект ТЭК:</label>
+                            <input type="text" id="input5" required>
+                        </div>  
+                        <input type="submit" value="Сохранить данные">
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="input2">Номер отчета:</label>
-                <input type="text" id="input2" required>
-            </div>
-            <div class="form-group">
-                <label for="input3">Дата создания:</label>
-                <input type="text" id="input3" required>
-            </div>
-            <div class="form-group">
-                <label for="input4">ФИО создателя:</label>
-                <input type="text" id="input4" required>
-            </div>
-            <div class="form-group">
-                <label for="input5">Объект ТЭК:</label>
-                <input type="text" id="input5" required>
-            </div>  
-            <button onclick="saveToFile()">Сохранить данные</button>
-        </div>
     </div>
         </div>
         <div id="footer">
